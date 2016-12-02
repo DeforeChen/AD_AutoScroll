@@ -29,10 +29,10 @@ PAGE_CTRL_POS;
  @param pageCnt 展示的页面数
  @param position 指出pageControl的位置
  @param time 每张图展示的时间
- @return self
  */
--(instancetype)initWithModel: (NSArray<id<bannerInfo>>*) modelArray
-               pageCtrlCount: (NSUInteger*)pageCnt
-            pageCtrlPosition:(PAGE_CTRL_POS)position
-             timeForEachPage:(int)time;
+-(void)setParamsWithModel: (NSArray<id<bannerInfo>>*) modelArray ///
+            pageCtrlCount: (int)pageCnt
+         pageCtrlPosition:(PAGE_CTRL_POS)position
+          timeForEachPage:(int)time;
+
 @end

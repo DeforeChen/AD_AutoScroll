@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  Demo_TableViewController.h
 //  Demo for AD_AutoScrollCell
 //
 //  Created by Chen Defore on 2016/12/2.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface Demo_TableViewController : UITableViewController
 
 @end
-

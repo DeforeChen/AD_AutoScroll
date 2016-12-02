@@ -9,13 +9,14 @@
 /* Begin PBXBuildFile section */
 		890B3AFF1DF16362001E1CE0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 890B3AFE1DF16362001E1CE0 /* main.m */; };
 		890B3B021DF16362001E1CE0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 890B3B011DF16362001E1CE0 /* AppDelegate.m */; };
-		890B3B051DF16362001E1CE0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 890B3B041DF16362001E1CE0 /* ViewController.m */; };
 		890B3B081DF16362001E1CE0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 890B3B061DF16362001E1CE0 /* Main.storyboard */; };
 		890B3B0A1DF16362001E1CE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 890B3B091DF16362001E1CE0 /* Assets.xcassets */; };
 		890B3B0D1DF16362001E1CE0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 890B3B0B1DF16362001E1CE0 /* LaunchScreen.storyboard */; };
 		890B3B181DF16362001E1CE0 /* Demo_for_AD_AutoScrollCellTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 890B3B171DF16362001E1CE0 /* Demo_for_AD_AutoScrollCellTests.m */; };
 		890B3B231DF16362001E1CE0 /* Demo_for_AD_AutoScrollCellUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 890B3B221DF16362001E1CE0 /* Demo_for_AD_AutoScrollCellUITests.m */; };
 		890B3B321DF163FF001E1CE0 /* AD_AutoScrollCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 890B3B311DF163FF001E1CE0 /* AD_AutoScrollCell.m */; };
+		890B3B391DF1657A001E1CE0 /* Demo_TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 890B3B381DF1657A001E1CE0 /* Demo_TableViewController.m */; };
+		890B3B3C1DF16D06001E1CE0 /* model.m in Sources */ = {isa = PBXBuildFile; fileRef = 890B3B3B1DF16D06001E1CE0 /* model.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,8 +41,6 @@
 		890B3AFE1DF16362001E1CE0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		890B3B001DF16362001E1CE0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		890B3B011DF16362001E1CE0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		890B3B031DF16362001E1CE0 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		890B3B041DF16362001E1CE0 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		890B3B071DF16362001E1CE0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		890B3B091DF16362001E1CE0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		890B3B0C1DF16362001E1CE0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -54,6 +53,10 @@
 		890B3B241DF16362001E1CE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		890B3B301DF163FF001E1CE0 /* AD_AutoScrollCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AD_AutoScrollCell.h; sourceTree = "<group>"; };
 		890B3B311DF163FF001E1CE0 /* AD_AutoScrollCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AD_AutoScrollCell.m; sourceTree = "<group>"; };
+		890B3B371DF1657A001E1CE0 /* Demo_TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Demo_TableViewController.h; path = ../Demo_TableViewController.h; sourceTree = "<group>"; };
+		890B3B381DF1657A001E1CE0 /* Demo_TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Demo_TableViewController.m; path = ../Demo_TableViewController.m; sourceTree = "<group>"; };
+		890B3B3A1DF16D06001E1CE0 /* model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = model.h; sourceTree = "<group>"; };
+		890B3B3B1DF16D06001E1CE0 /* model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = model.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,11 +107,13 @@
 		890B3AFC1DF16362001E1CE0 /* Demo for AD_AutoScrollCell */ = {
 			isa = PBXGroup;
 			children = (
+				890B3B371DF1657A001E1CE0 /* Demo_TableViewController.h */,
+				890B3B381DF1657A001E1CE0 /* Demo_TableViewController.m */,
+				890B3B3A1DF16D06001E1CE0 /* model.h */,
+				890B3B3B1DF16D06001E1CE0 /* model.m */,
 				890B3B001DF16362001E1CE0 /* AppDelegate.h */,
 				890B3B011DF16362001E1CE0 /* AppDelegate.m */,
 				890B3B331DF1641E001E1CE0 /* AD_AutoScrollCell */,
-				890B3B031DF16362001E1CE0 /* ViewController.h */,
-				890B3B041DF16362001E1CE0 /* ViewController.m */,
 				890B3B061DF16362001E1CE0 /* Main.storyboard */,
 				890B3B091DF16362001E1CE0 /* Assets.xcassets */,
 				890B3B0B1DF16362001E1CE0 /* LaunchScreen.storyboard */,
@@ -220,6 +225,7 @@
 				TargetAttributes = {
 					890B3AF91DF16362001E1CE0 = {
 						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 83SUXEZH4Q;
 						ProvisioningStyle = Automatic;
 					};
 					890B3B121DF16362001E1CE0 = {
@@ -286,7 +292,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				890B3B051DF16362001E1CE0 /* ViewController.m in Sources */,
+				890B3B391DF1657A001E1CE0 /* Demo_TableViewController.m in Sources */,
+				890B3B3C1DF16D06001E1CE0 /* model.m in Sources */,
 				890B3B021DF16362001E1CE0 /* AppDelegate.m in Sources */,
 				890B3B321DF163FF001E1CE0 /* AD_AutoScrollCell.m in Sources */,
 				890B3AFF1DF16362001E1CE0 /* main.m in Sources */,
@@ -436,6 +443,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 83SUXEZH4Q;
 				INFOPLIST_FILE = "Demo for AD_AutoScrollCell/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -448,6 +456,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 83SUXEZH4Q;
 				INFOPLIST_FILE = "Demo for AD_AutoScrollCell/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

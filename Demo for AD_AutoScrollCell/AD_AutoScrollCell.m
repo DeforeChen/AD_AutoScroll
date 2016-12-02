@@ -22,7 +22,7 @@
 @property (nonatomic,strong) UIImageView *rightBannerImg;
 
 @property (nonatomic,strong) NSArray <id<bannerInfo>> *modelInfoArray;
-@property (nonatomic) NSUInteger   *pageCount;
+@property (nonatomic) int pageCount;
 @property (nonatomic) PAGE_CTRL_POS position;
 @property (nonatomic) int displayTime;
 
@@ -33,27 +33,23 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
-    self.backgroundColor = [UIColor yellowColor];
+    self.backgroundColor = [UIColor redColor];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
+    
     // Configure the view for the selected state
 }
 
--(instancetype)initWithModel:(NSArray<id<bannerInfo>> *)modelArray
-               pageCtrlCount:(NSUInteger *)pageCnt
-            pageCtrlPosition:(PAGE_CTRL_POS)position
-             timeForEachPage:(int)time {
-    self = [super init];
-    if (self) {
-        _modelInfoArray = modelArray;
-        _pageCount      = pageCnt;
-        _position       = position;
-        _displayTime    = time;
-    }
-    return self;
+-(void)setParamsWithModel:(NSArray<id<bannerInfo>>*)modelArray
+            pageCtrlCount:(int)pageCnt
+         pageCtrlPosition:(PAGE_CTRL_POS)position
+          timeForEachPage:(int)time {
+    _modelInfoArray = modelArray;
+    _pageCount      = pageCnt;
+    _position       = position;
+    _displayTime    = time;
 }
 
 @end
