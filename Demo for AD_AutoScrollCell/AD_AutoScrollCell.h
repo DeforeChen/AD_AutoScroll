@@ -19,7 +19,7 @@ typedef enum{
     RIGHT  = 2,
 }
 PAGE_CTRL_POS;
-
+typedef void (^BannerBtnCallback)(UIViewController *vc);
 @interface AD_AutoScrollCell : UITableViewCell
 
 /**
@@ -29,10 +29,12 @@ PAGE_CTRL_POS;
  @param pageCnt 展示的页面数
  @param position 指出pageControl的位置
  @param time 每张图展示的时间
+ @param blk 当且仅当图片有对应url时跳转到对应网页
  */
 -(void)setParamsWithModel: (NSArray<id<bannerInfo>>*) modelArray ///
             pageCtrlCount: (int)pageCnt
          pageCtrlPosition:(PAGE_CTRL_POS)position
-          timeForEachPage:(int)time;
+          timeForEachPage:(int)time
+     tapBannerCompleteBlk:(BannerBtnCallback)blk;
 
 @end

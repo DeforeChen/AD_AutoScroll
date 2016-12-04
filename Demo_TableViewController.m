@@ -48,12 +48,30 @@
     model *mm = [[model alloc] init];
     mm.bannerImg = [UIImage new];
     mm.urlStr = @"www.baidu.com";
-    NSMutableArray *array = [NSMutableArray arrayWithObjects:mm, nil];
+    
+    model *aa = [[model alloc] init];
+    aa.bannerImg = [UIImage new];
+    aa.urlStr = @"www.baidu.com";
+    
+    model *bb = [[model alloc] init];
+    bb.bannerImg = [UIImage new];
+    bb.urlStr = @"www.baidu.com";
+
+    model *cc = [[model alloc] init];
+    cc.bannerImg = [UIImage new];
+    cc.urlStr = @"www.baidu.com";
+    
+    NSMutableArray *array = [NSMutableArray arrayWithObjects:mm,aa,bb,cc,nil];
     
     [cell setParamsWithModel:array
-               pageCtrlCount:5
+               pageCtrlCount:3
             pageCtrlPosition:LEFT
-             timeForEachPage:2];
+             timeForEachPage:2
+        tapBannerCompleteBlk:^(UIViewController *vc) {
+            [self.navigationController pushViewController:vc
+                                                 animated:YES];
+        }
+     ];
     
     return cell;
 }
