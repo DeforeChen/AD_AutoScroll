@@ -17,6 +17,7 @@
 		890B3B321DF163FF001E1CE0 /* AD_AutoScrollCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 890B3B311DF163FF001E1CE0 /* AD_AutoScrollCell.m */; };
 		890B3B391DF1657A001E1CE0 /* Demo_TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 890B3B381DF1657A001E1CE0 /* Demo_TableViewController.m */; };
 		890B3B3C1DF16D06001E1CE0 /* model.m in Sources */ = {isa = PBXBuildFile; fileRef = 890B3B3B1DF16D06001E1CE0 /* model.m */; };
+		8914C2391DF44DE80056CB91 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8914C2381DF44DE80056CB91 /* WebKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,8 @@
 		890B3B381DF1657A001E1CE0 /* Demo_TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Demo_TableViewController.m; path = ../Demo_TableViewController.m; sourceTree = "<group>"; };
 		890B3B3A1DF16D06001E1CE0 /* model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = model.h; sourceTree = "<group>"; };
 		890B3B3B1DF16D06001E1CE0 /* model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = model.m; sourceTree = "<group>"; };
+		8914C2381DF44DE80056CB91 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		8914C23A1DF44DF60056CB91 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8914C2391DF44DE80056CB91 /* WebKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,6 +95,7 @@
 				890B3B161DF16362001E1CE0 /* Demo for AD_AutoScrollCellTests */,
 				890B3B211DF16362001E1CE0 /* Demo for AD_AutoScrollCellUITests */,
 				890B3AFB1DF16362001E1CE0 /* Products */,
+				8914C2371DF44DE80056CB91 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -156,6 +161,15 @@
 				890B3B311DF163FF001E1CE0 /* AD_AutoScrollCell.m */,
 			);
 			name = AD_AutoScrollCell;
+			sourceTree = "<group>";
+		};
+		8914C2371DF44DE80056CB91 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8914C23A1DF44DF60056CB91 /* Reveal.framework */,
+				8914C2381DF44DE80056CB91 /* WebKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -444,9 +458,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 83SUXEZH4Q;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "Demo for AD_AutoScrollCell/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lz",
+					"-framework",
+					Reveal,
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Newland.Demo-for-AD-AutoScrollCell";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -457,9 +481,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 83SUXEZH4Q;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "Demo for AD_AutoScrollCell/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lz",
+					"-framework",
+					Reveal,
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Newland.Demo-for-AD-AutoScrollCell";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -530,6 +564,7 @@
 				890B3B291DF16362001E1CE0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		890B3B2A1DF16362001E1CE0 /* Build configuration list for PBXNativeTarget "Demo for AD_AutoScrollCellTests" */ = {
 			isa = XCConfigurationList;
@@ -538,6 +573,7 @@
 				890B3B2C1DF16362001E1CE0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		890B3B2D1DF16362001E1CE0 /* Build configuration list for PBXNativeTarget "Demo for AD_AutoScrollCellUITests" */ = {
 			isa = XCConfigurationList;
@@ -546,6 +582,7 @@
 				890B3B2F1DF16362001E1CE0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -51,7 +51,7 @@
     NSMutableArray *array = [NSMutableArray arrayWithObjects:mm, nil];
     
     [cell setParamsWithModel:array
-               pageCtrlCount:2
+               pageCtrlCount:5
             pageCtrlPosition:LEFT
              timeForEachPage:2];
     
