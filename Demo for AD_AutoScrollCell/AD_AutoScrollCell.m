@@ -31,6 +31,9 @@
 @property (nonatomic) PAGE_CTRL_POS position;
 @property (nonatomic) int displayTime;
 @property (strong,nonatomic) BannerBtnCallback bannerBlk;
+
+@property (nonatomic,strong) NSTimer *timer;
+
 @end
 
 
@@ -38,8 +41,13 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(JunmpToWeb)];//点击手势
     [self addGestureRecognizer:tapGesture];
+}
+
+- (void)layerWillDraw:(CALayer *)layer {
+    NSLog(@"xiangdangyu");
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -49,7 +57,7 @@
 
 -(void)setParamsWithModel:(NSArray<id<bannerInfo>>*)modelArray
          pageCtrlPosition:(PAGE_CTRL_POS)position
-          timeForEachPage:(int)time
+          timeForEachPage:(NSTimeInterval)time
      tapBannerCompleteBlk:(BannerBtnCallback)blk{
     
     _modelInfoArray = modelArray;
@@ -57,7 +65,28 @@
     _displayTime    = time;
     _bannerCnt      = (int)modelArray.count;
     _bannerBlk      = blk;
+    NSNumber *animationTime = [[NSNumber alloc] initWithFloat:time/2];
+    _timer = [NSTimer scheduledTimerWithTimeInterval:time
+                                              target:self
+                                            selector:@selector(advertisementAutoScrolling:)
+                                            userInfo:animationTime
+                                             repeats:YES];
+    [_timer fire];
     [self initUI];
+}
+
+-(void)advertisementAutoScrolling:(NSTimer*) timer {
+    NSLog(@"user info = %f",[timer.userInfo floatValue]);
+    [UIView animateWithDuration:[timer.userInfo floatValue]
+                     animations:^{
+                         self.bannerContainerScrollView.contentOffset = CGPointMake(WIDTH*2, 0);
+                     }
+                     completion:^(BOOL complete){
+                         [self dealWithScroll:WIDTH*2];
+                     }];
+    
+    NSLog(@"timer = %ld",(long)self.bannerPageCtrl.currentPage);
+
 }
 
 -(void)initUI {
@@ -65,6 +94,7 @@
     self.bannerContainerScrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
     [self.bannerContainerScrollView setContentSize:CGSizeMake(self.bannerCnt*WIDTH, HEIGHT)];
     self.bannerContainerScrollView.pagingEnabled = YES;
+    self.bannerContainerScrollView.showsHorizontalScrollIndicator = NO;
     self.bannerContainerScrollView.delegate      = self;
     self.bannerContainerScrollView.backgroundColor = [UIColor blackColor];
     [self.contentView addSubview:self.bannerContainerScrollView];
@@ -86,6 +116,7 @@
     self.bannerPageCtrl.numberOfPages = self.bannerCnt;
     self.bannerPageCtrl.currentPage   = 1;
     self.bannerPageCtrl.backgroundColor = [UIColor yellowColor];
+    self.bannerPageCtrl.pageIndicatorTintColor = [UIColor blackColor];
     [self addSubview:self.bannerPageCtrl];
     [self reloadBannerButtons];
 }
@@ -129,6 +160,7 @@
 
 -(void)JunmpToWeb {
     NSLog(@"get into web btn");
+    [_timer invalidate];
     NSString *urlStr = [_modelInfoArray[self.bannerPageCtrl.currentPage] urlStr];
     if (urlStr) {
         BannerWebViewController *bannerWebVC = [[BannerWebViewController alloc] initWithURL:urlStr];
@@ -138,10 +170,8 @@
     } else
         NSLog(@"No available URL");
 }
-#pragma mark ScrollView Delegate
-#pragma mark -滑动结束
--(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    CGFloat offsetX = scrollView.contentOffset.x;
+
+-(void)dealWithScroll:(CGFloat)offsetX {
     if (offsetX == 0) { // 右滑
         //若是第一张且往右滑动，currentPage要跳到最大，否则就-1
         self.bannerPageCtrl.currentPage = (self.bannerPageCtrl.currentPage == 0)?_bannerCnt-1:(self.bannerPageCtrl.currentPage-1);
@@ -149,7 +179,20 @@
         //若是最后一张且往左滑动，currentPage要跳到0，否则就+1
         self.bannerPageCtrl.currentPage = (self.bannerPageCtrl.currentPage == _bannerCnt-1)?0:(self.bannerPageCtrl.currentPage+1);
     }
+    
+    NSLog(@"屏幕宽度 = %f",WIDTH);
+    NSLog(@"<<<<重载前的offset x = %f",offsetX);
     //滑动后重载图片
     [self reloadBannerButtons];
+    NSLog(@">>>>重载后的offset x = %f",offsetX);
+
 }
+#pragma mark ScrollView Delegate
+#pragma mark -滑动结束
+-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    CGFloat offsetX = scrollView.contentOffset.x;
+    [self dealWithScroll:offsetX];
+    [_timer fire];
+}
+
 @end

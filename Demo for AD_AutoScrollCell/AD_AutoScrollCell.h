@@ -32,7 +32,7 @@ typedef void (^BannerBtnCallback)(UIViewController *vc);
  */
 -(void)setParamsWithModel: (NSArray<id<bannerInfo>>*) modelArray ///
          pageCtrlPosition:(PAGE_CTRL_POS)position
-          timeForEachPage:(int)time
+          timeForEachPage:(NSTimeInterval)time
      tapBannerCompleteBlk:(BannerBtnCallback)blk;
 
 @end
