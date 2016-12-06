@@ -47,15 +47,15 @@
     
     model *mm = [[model alloc] init];
     mm.bannerImg = [UIImage imageNamed:@"01"];
-    mm.urlStr = @"www.baidu.com";
+    mm.urlStr = @"https://www.baidu.com/s?wd=wkwebview%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B&rsp=3&f=1&oq=WKWebview%20%E6%8C%89%E9%94%AE%E5%93%8D%E5%BA%94&ie=utf-8&rsv_pq=c51f31b50000f9aa&rsv_t=cf48LRT0ae8Qlz8Co5WUA9f8ElUSlOw5Hu%2B80NFcMUIpueWfeSQd%2Btlebec&rqlang=cn&rsv_ers=xn1&rs_src=0&rsv_pq=c51f31b50000f9aa&rsv_t=cf48LRT0ae8Qlz8Co5WUA9f8ElUSlOw5Hu%2B80NFcMUIpueWfeSQd%2Btlebec";
     
     model *aa = [[model alloc] init];
     aa.bannerImg = [UIImage imageNamed:@"02"];
-    aa.urlStr = @"www.baidu.com";
+    aa.urlStr = @"https://www.baidu.com/s?wd=wkwebview%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B&rsp=3&f=1&oq=WKWebview%20%E6%8C%89%E9%94%AE%E5%93%8D%E5%BA%94&ie=utf-8&rsv_pq=c51f31b50000f9aa&rsv_t=cf48LRT0ae8Qlz8Co5WUA9f8ElUSlOw5Hu%2B80NFcMUIpueWfeSQd%2Btlebec&rqlang=cn&rsv_ers=xn1&rs_src=0&rsv_pq=c51f31b50000f9aa&rsv_t=cf48LRT0ae8Qlz8Co5WUA9f8ElUSlOw5Hu%2B80NFcMUIpueWfeSQd%2Btlebec";
     
     model *bb = [[model alloc] init];
     bb.bannerImg = [UIImage imageNamed:@"03"];
-    bb.urlStr = @"www.baidu.com";
+    bb.urlStr = @"https://www.baidu.com/s?wd=wkwebview%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B&rsp=3&f=1&oq=WKWebview%20%E6%8C%89%E9%94%AE%E5%93%8D%E5%BA%94&ie=utf-8&rsv_pq=c51f31b50000f9aa&rsv_t=cf48LRT0ae8Qlz8Co5WUA9f8ElUSlOw5Hu%2B80NFcMUIpueWfeSQd%2Btlebec&rqlang=cn&rsv_ers=xn1&rs_src=0&rsv_pq=c51f31b50000f9aa&rsv_t=cf48LRT0ae8Qlz8Co5WUA9f8ElUSlOw5Hu%2B80NFcMUIpueWfeSQd%2Btlebec";
 
     model *cc = [[model alloc] init];
     cc.bannerImg = [UIImage imageNamed:@"04"];

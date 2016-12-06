@@ -29,11 +29,11 @@
 @property (nonatomic,strong) NSArray <id<bannerInfo>> *modelInfoArray;
 @property (nonatomic) int bannerCnt;
 @property (nonatomic) PAGE_CTRL_POS position;
-@property (nonatomic) int displayTime;
+@property (nonatomic) NSTimeInterval displayTime;
 @property (strong,nonatomic) BannerBtnCallback bannerBlk;
-
 @property (nonatomic,strong) NSTimer *timer;
 
+@property (nonatomic) BOOL secondTimeBeginTimer;
 @end
 
 
@@ -42,7 +42,7 @@
     [super awakeFromNib];
     // Initialization code
 
-    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(JunmpToWeb)];//点击手势
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(JumpToWeb)];//点击手势
     [self addGestureRecognizer:tapGesture];
 }
 
@@ -65,38 +65,20 @@
     _displayTime    = time;
     _bannerCnt      = (int)modelArray.count;
     _bannerBlk      = blk;
-    NSNumber *animationTime = [[NSNumber alloc] initWithFloat:time/2];
-    _timer = [NSTimer scheduledTimerWithTimeInterval:time
-                                              target:self
-                                            selector:@selector(advertisementAutoScrolling:)
-                                            userInfo:animationTime
-                                             repeats:YES];
-    [_timer fire];
+    _secondTimeBeginTimer = NO;
+    [self enableTimer];
     [self initUI];
-}
-
--(void)advertisementAutoScrolling:(NSTimer*) timer {
-    NSLog(@"user info = %f",[timer.userInfo floatValue]);
-    [UIView animateWithDuration:[timer.userInfo floatValue]
-                     animations:^{
-                         self.bannerContainerScrollView.contentOffset = CGPointMake(WIDTH*2, 0);
-                     }
-                     completion:^(BOOL complete){
-                         [self dealWithScroll:WIDTH*2];
-                     }];
-    
-    NSLog(@"timer = %ld",(long)self.bannerPageCtrl.currentPage);
-
 }
 
 -(void)initUI {
     // 1. config the scrollview
     self.bannerContainerScrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
-    [self.bannerContainerScrollView setContentSize:CGSizeMake(self.bannerCnt*WIDTH, HEIGHT)];
+    [self.bannerContainerScrollView setContentSize:CGSizeMake(3*WIDTH, HEIGHT)];
     self.bannerContainerScrollView.pagingEnabled = YES;
-    self.bannerContainerScrollView.showsHorizontalScrollIndicator = NO;
-    self.bannerContainerScrollView.delegate      = self;
-    self.bannerContainerScrollView.backgroundColor = [UIColor blackColor];
+    self.bannerContainerScrollView.bounces       = NO;
+    self.bannerContainerScrollView.showsHorizontalScrollIndicator = YES;
+    self.bannerContainerScrollView.delegate         = self;
+    self.bannerContainerScrollView.backgroundColor  = [UIColor blackColor];
     [self.contentView addSubview:self.bannerContainerScrollView];
     
     // 2. config the page control
@@ -158,9 +140,9 @@
     return img;
 }
 
--(void)JunmpToWeb {
+-(void)JumpToWeb {
     NSLog(@"get into web btn");
-    [_timer invalidate];
+    [self disableTimer];
     NSString *urlStr = [_modelInfoArray[self.bannerPageCtrl.currentPage] urlStr];
     if (urlStr) {
         BannerWebViewController *bannerWebVC = [[BannerWebViewController alloc] initWithURL:urlStr];
@@ -179,20 +161,57 @@
         //若是最后一张且往左滑动，currentPage要跳到0，否则就+1
         self.bannerPageCtrl.currentPage = (self.bannerPageCtrl.currentPage == _bannerCnt-1)?0:(self.bannerPageCtrl.currentPage+1);
     }
-    
-    NSLog(@"屏幕宽度 = %f",WIDTH);
-    NSLog(@"<<<<重载前的offset x = %f",offsetX);
-    //滑动后重载图片
+
     [self reloadBannerButtons];
-    NSLog(@">>>>重载后的offset x = %f",offsetX);
+//    [self setUserInteractionEnabled:YES];
 
 }
+#pragma mark Timer related
+-(void)enableTimer {
+    if (_displayTime != 0) {
+        NSNumber *animationTime = [[NSNumber alloc] initWithFloat:_displayTime/5];
+        if (_timer == nil) {
+            _timer = [NSTimer scheduledTimerWithTimeInterval:_displayTime
+                                                      target:self
+                                                    selector:@selector(advertisementAutoScrolling:)
+                                                    userInfo:animationTime
+                                                     repeats:YES];
+            [_timer fire];
+        }
+    }
+}
+
+-(void)advertisementAutoScrolling:(NSTimer*) timer {
+//    [self setUserInteractionEnabled:NO];
+    if (self.secondTimeBeginTimer == NO) {
+        self.secondTimeBeginTimer = YES;
+    } else {
+        [UIView animateWithDuration:[timer.userInfo floatValue]
+                         animations:^{
+                             self.bannerContainerScrollView.contentOffset = CGPointMake(WIDTH*2, 0);
+                         }
+                         completion:^(BOOL complete){
+                             [self dealWithScroll:WIDTH*2];
+                         }];
+    }
+}
+
+-(void)disableTimer {
+    [_timer invalidate];
+    self.secondTimeBeginTimer = NO;
+    _timer = nil;
+}
+
 #pragma mark ScrollView Delegate
 #pragma mark -滑动结束
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     CGFloat offsetX = scrollView.contentOffset.x;
     [self dealWithScroll:offsetX];
-    [_timer fire];
+    [self enableTimer];
+}
+
+-(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    [self disableTimer];
 }
 
 @end

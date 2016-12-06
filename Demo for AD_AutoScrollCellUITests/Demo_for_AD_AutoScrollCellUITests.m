@@ -37,4 +37,21 @@
     // Use XCTAssert and related functions to verify your tests produce the correct results.
 }
 
+- (void)testExampleA{
+    XCUIElementQuery *tablesQuery = [[XCUIApplication alloc] init].tables;
+    XCUIElement *page3Of4PageIndicator = tablesQuery.pageIndicators[@"page 3 of 4"];
+    [page3Of4PageIndicator swipeLeft];
+    [page3Of4PageIndicator swipeLeft];
+    
+    XCUIElement *page2Of4PageIndicator = tablesQuery.pageIndicators[@"page 2 of 4"];
+    [page2Of4PageIndicator swipeLeft];
+    [page3Of4PageIndicator swipeLeft];
+    [page2Of4PageIndicator swipeLeft];
+    [page2Of4PageIndicator swipeLeft];
+    [page3Of4PageIndicator swipeLeft];
+    [tablesQuery.pageIndicators[@"page 4 of 4"] swipeLeft];
+    [tablesQuery.pageIndicators[@"page 1 of 4"] swipeLeft];
+    
+}
+
 @end
