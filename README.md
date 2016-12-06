@@ -1,5 +1,22 @@
-## 效果
-￼
+## 简书地址
+[简书](http://www.jianshu.com/p/1053ec04664f)
+
+## 接口说明
+```objc
+/**
+ 初始化
+ 
+ @param modelArray 传入的数据模型，必须遵循 bannerInfo 协议，至少包含图片和链接
+ @param position 指出pageControl的位置
+ @param time 每张图展示的时间
+ @param blk 当且仅当图片有对应url时跳转到对应网页
+ */
+-(void)setParamsWithModel: (NSArray<id<bannerInfo>>*) modelArray ///
+         pageCtrlPosition:(PAGE_CTRL_POS)position
+          timeForEachPage:(NSTimeInterval)time
+     tapBannerCompleteBlk:(BannerBtnCallback)blk;
+```
+
 ## 控件
 前提：
 整个滚动的效果是在一个自定义的`UITableViewCell`中实现的。
@@ -20,13 +37,12 @@
 ![2016-08-03 at 下午8.44.png]()(quiver-image-url/D0D8534ED2C4D7623D7FDD38D30B20EE.png)
   * 每一次scrollview滚动结束，会调用delegate中的函数
   ```objc
-`  -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+  -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
   ```
-`  滚动结束后要做的事包括：
+  滚动结束后要做的事包括：
   * 根据滑动的偏移量，改变 pagecontrol的currentpage
   * 重载图片
   将上面截图中的三个UIView(其实是UIButton)，removeFromSuperview,然后根据self.pagecontrol.currentpage作为下标，去传进来的model数组中找到相应的三个连号。如下图
   ![2016-08-03 at 下午10.37.png]()(quiver-image-url/578B032393FB319A765E493122BC77AE.png)
 
-## 代码
 
