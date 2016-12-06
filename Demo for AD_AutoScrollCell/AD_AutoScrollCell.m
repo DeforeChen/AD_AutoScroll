@@ -42,12 +42,9 @@
     [super awakeFromNib];
     // Initialization code
 
-    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(JumpToWeb)];//点击手势
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self
+                                                                                action:@selector(JumpToWeb)];//点击手势
     [self addGestureRecognizer:tapGesture];
-}
-
-- (void)layerWillDraw:(CALayer *)layer {
-    NSLog(@"xiangdangyu");
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -153,23 +150,10 @@
         NSLog(@"No available URL");
 }
 
--(void)dealWithScroll:(CGFloat)offsetX {
-    if (offsetX == 0) { // 右滑
-        //若是第一张且往右滑动，currentPage要跳到最大，否则就-1
-        self.bannerPageCtrl.currentPage = (self.bannerPageCtrl.currentPage == 0)?_bannerCnt-1:(self.bannerPageCtrl.currentPage-1);
-    } else if (offsetX != WIDTH) { // 左滑
-        //若是最后一张且往左滑动，currentPage要跳到0，否则就+1
-        self.bannerPageCtrl.currentPage = (self.bannerPageCtrl.currentPage == _bannerCnt-1)?0:(self.bannerPageCtrl.currentPage+1);
-    }
-
-    [self reloadBannerButtons];
-//    [self setUserInteractionEnabled:YES];
-
-}
 #pragma mark Timer related
 -(void)enableTimer {
     if (_displayTime != 0) {
-        NSNumber *animationTime = [[NSNumber alloc] initWithFloat:_displayTime/5];
+        NSNumber *animationTime = [[NSNumber alloc] initWithFloat:0.4];
         if (_timer == nil) {
             _timer = [NSTimer scheduledTimerWithTimeInterval:_displayTime
                                                       target:self
@@ -182,7 +166,6 @@
 }
 
 -(void)advertisementAutoScrolling:(NSTimer*) timer {
-//    [self setUserInteractionEnabled:NO];
     if (self.secondTimeBeginTimer == NO) {
         self.secondTimeBeginTimer = YES;
     } else {
@@ -214,4 +197,15 @@
     [self disableTimer];
 }
 
+-(void)dealWithScroll:(CGFloat)offsetX {
+    if (offsetX == 0) { // 右滑
+        //若是第一张且往右滑动，currentPage要跳到最大，否则就-1
+        self.bannerPageCtrl.currentPage = (self.bannerPageCtrl.currentPage == 0)?_bannerCnt-1:(self.bannerPageCtrl.currentPage-1);
+    } else if (offsetX != WIDTH) { // 左滑
+        //若是最后一张且往左滑动，currentPage要跳到0，否则就+1
+        self.bannerPageCtrl.currentPage = (self.bannerPageCtrl.currentPage == _bannerCnt-1)?0:(self.bannerPageCtrl.currentPage+1);
+    }
+    
+    [self reloadBannerButtons];
+}
 @end
