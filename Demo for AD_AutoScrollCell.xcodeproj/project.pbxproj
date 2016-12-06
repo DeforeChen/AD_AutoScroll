@@ -18,6 +18,7 @@
 		890B3B391DF1657A001E1CE0 /* Demo_TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 890B3B381DF1657A001E1CE0 /* Demo_TableViewController.m */; };
 		890B3B3C1DF16D06001E1CE0 /* model.m in Sources */ = {isa = PBXBuildFile; fileRef = 890B3B3B1DF16D06001E1CE0 /* model.m */; };
 		8914C2391DF44DE80056CB91 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8914C2381DF44DE80056CB91 /* WebKit.framework */; };
+		8914C23E1DF467B30056CB91 /* BannerWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8914C23D1DF467B30056CB91 /* BannerWebViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,8 @@
 		890B3B3B1DF16D06001E1CE0 /* model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = model.m; sourceTree = "<group>"; };
 		8914C2381DF44DE80056CB91 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		8914C23A1DF44DF60056CB91 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
+		8914C23C1DF467B30056CB91 /* BannerWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BannerWebViewController.h; sourceTree = "<group>"; };
+		8914C23D1DF467B30056CB91 /* BannerWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BannerWebViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +162,8 @@
 			children = (
 				890B3B301DF163FF001E1CE0 /* AD_AutoScrollCell.h */,
 				890B3B311DF163FF001E1CE0 /* AD_AutoScrollCell.m */,
+				8914C23C1DF467B30056CB91 /* BannerWebViewController.h */,
+				8914C23D1DF467B30056CB91 /* BannerWebViewController.m */,
 			);
 			name = AD_AutoScrollCell;
 			sourceTree = "<group>";
@@ -311,6 +316,7 @@
 				890B3B021DF16362001E1CE0 /* AppDelegate.m in Sources */,
 				890B3B321DF163FF001E1CE0 /* AD_AutoScrollCell.m in Sources */,
 				890B3AFF1DF16362001E1CE0 /* main.m in Sources */,
+				8914C23E1DF467B30056CB91 /* BannerWebViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

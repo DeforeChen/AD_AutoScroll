@@ -46,28 +46,28 @@
     AD_AutoScrollCell *cell = (AD_AutoScrollCell*)[tableView dequeueReusableCellWithIdentifier:@"testID" forIndexPath:indexPath];
     
     model *mm = [[model alloc] init];
-    mm.bannerImg = [UIImage new];
+    mm.bannerImg = [UIImage imageNamed:@"01"];
     mm.urlStr = @"www.baidu.com";
     
     model *aa = [[model alloc] init];
-    aa.bannerImg = [UIImage new];
+    aa.bannerImg = [UIImage imageNamed:@"02"];
     aa.urlStr = @"www.baidu.com";
     
     model *bb = [[model alloc] init];
-    bb.bannerImg = [UIImage new];
+    bb.bannerImg = [UIImage imageNamed:@"03"];
     bb.urlStr = @"www.baidu.com";
 
     model *cc = [[model alloc] init];
-    cc.bannerImg = [UIImage new];
-    cc.urlStr = @"www.baidu.com";
+    cc.bannerImg = [UIImage imageNamed:@"04"];
+    cc.urlStr = nil;
     
     NSMutableArray *array = [NSMutableArray arrayWithObjects:mm,aa,bb,cc,nil];
     
     [cell setParamsWithModel:array
-               pageCtrlCount:3
             pageCtrlPosition:LEFT
              timeForEachPage:2
         tapBannerCompleteBlk:^(UIViewController *vc) {
+            NSLog(@"execute... block");
             [self.navigationController pushViewController:vc
                                                  animated:YES];
         }
