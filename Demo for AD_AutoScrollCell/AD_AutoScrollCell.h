@@ -13,12 +13,12 @@
 @property (nonatomic,copy) NSString *urlStr;
 @end
 
-typedef enum{
+typedef enum : NSUInteger {
     LEFT   = 0,
     MIDDLE = 1,
     RIGHT  = 2,
-}
-PAGE_CTRL_POS;
+} PAGE_CTRL_POS;
+
 typedef void (^BannerBtnCallback)(UIViewController *vc);
 @interface AD_AutoScrollCell : UITableViewCell
 
@@ -30,7 +30,7 @@ typedef void (^BannerBtnCallback)(UIViewController *vc);
  @param time 每张图展示的时间
  @param blk 当且仅当图片有对应url时跳转到对应网页
  */
--(void)setParamsWithModel: (NSArray<id<bannerInfo>>*) modelArray ///
+-(void)setParamsWithModel:(NSArray<id<bannerInfo>>*) modelArray ///
          pageCtrlPosition:(PAGE_CTRL_POS)position
           timeForEachPage:(NSTimeInterval)time
      tapBannerCompleteBlk:(BannerBtnCallback)blk;
