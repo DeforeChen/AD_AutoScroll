@@ -27,10 +27,10 @@
 @property (nonatomic,strong) UIImageView *rightBannerImg;
 
 @property (nonatomic,copy) NSArray <id<bannerInfo>> *modelInfoArray;
-@property (nonatomic) int bannerCnt;
-@property (nonatomic) PAGE_CTRL_POS position;
+@property (nonatomic,assign) NSUInteger bannerCnt;
+@property (nonatomic,assign) PAGE_CTRL_POS position;
 @property (nonatomic) NSTimeInterval displayTime;
-@property (strong,nonatomic) BannerBtnCallback bannerBlk;
+@property (nonatomic,strong) BannerBtnCallback bannerBlk;
 @property (nonatomic,strong) NSTimer *timer;
 
 @property (nonatomic,assign) BOOL secondTimeBeginTimer;
